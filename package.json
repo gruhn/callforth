@@ -1,0 +1,21 @@
+{
+  "name": "callforth",
+  "version": "0.1.0",
+  "description": "A tiny utility library to replace callbacks with Promises where possible."
+  "author": "Niklas Gruhn",
+  "license": "MIT",
+  "source": "src/callforth.js",
+  "main": "dist/callforth.js",
+  "module": "dist/callforth.mjs",
+  "unpkg": "dist/callforth.umd.js",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+
+  "homepage": "https://github.com/gruhn/callforth#readme",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/gruhn/callforth"
+  }
+}
