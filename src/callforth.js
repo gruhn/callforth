@@ -20,6 +20,6 @@ export function eventOn(eventTarget, successEvent, errorEvent = "error") {
 
 export function timeout(delay) {
   return new Promise(
-    resolve => window.setTimeout(resolve, delay)
+    resolve => setTimeout(resolve, delay)
   );
 }

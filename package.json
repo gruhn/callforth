@@ -1,7 +1,7 @@
 {
   "name": "callforth",
-  "version": "0.3.0",
-  "description": "A tiny utility library to replace callbacks with Promises where possible.",
+  "version": "0.3.1",
+  "description": "A tiny utility library to conveniently replace callbacks with Promises.",
   "author": "Niklas Gruhn",
   "license": "MIT",
   "source": "src/callforth.js",
