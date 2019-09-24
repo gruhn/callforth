@@ -19,7 +19,7 @@ await timeout(3000)
 await eventOn(videoElement, "loadeddata")
 ```
 ```js
-let message = await eventOn(webWorker, "message")
+const message = await eventOn(webWorker, "message")
 ```
 
 ## Install :package:
@@ -32,6 +32,19 @@ Now you can:
 
 ```js
 import { eventOn, timeout } from "callforth"
+
+// ...
+```
+
+Alternatively, include [this script](https://unpkg.com/callforth/dist/callforth.umd.js) and:
+
+```html
+<script src="./path/to/callforth.umd.js"></script>
+<script>
+  const { eventOn, timeout } = window.callforth
+  
+  // ...
+</script>
 ```
 
 ## API :eyes:
@@ -39,7 +52,7 @@ import { eventOn, timeout } from "callforth"
 ### `eventOn`
 
 ```js
-let payload = await eventOn(target, successEvent, errorEvent)
+const payload = await eventOn(target, successEvent, errorEvent)
 ```
 
 #### Parameters
