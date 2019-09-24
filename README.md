@@ -78,3 +78,24 @@ await timeout(delay)
 #### Return Value
 
  * undefined
+
+## More Examples
+
+```js
+async function loadScript(url) {
+  let script = document.createElement("script")
+
+  script.src = url
+
+  await eventOn(script, "loaded")
+}
+```
+```js
+async function primesLessThen(number) {
+  primeWorker.postMessage(number)
+
+  const result = await eventOn(primeWorker, "message")
+
+  return result
+}
+```
