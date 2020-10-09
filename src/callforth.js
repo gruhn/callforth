@@ -23,3 +23,18 @@ export const timeout = milliseconds => {
     resolve => setTimeout(resolve, milliseconds)
   )
 }
+
+export const polling = async (predicate, options = {}) => {
+  const { maxTries = 10, interval = 10 } = options
+
+  if (maxTries <= 0) {
+    // reject
+    throw undefined
+  } else if (predicate()) {
+    // resolve
+    return undefined
+  } else {
+    await timeout(interval)
+    await polling(predicate, { maxTries: maxTries-1, interval })
+  }
+}

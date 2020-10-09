@@ -7,7 +7,7 @@
 A tiny utility library to replace callbacks with Promises where possible.
 **Don't callback, callforth!**
 
-It simply includes two functions I see myself re-implementing in nearly every project.
+It simply includes a hand-full of functions I see myself re-implementing in nearly every project.
 So I might as well put them in a package.
 
 Do things like:
@@ -31,9 +31,7 @@ npm install callforth
 Now you can:
 
 ```js
-import { eventOn, timeout } from "callforth"
-
-// ...
+import { eventOn, timeout, polling } from "callforth"
 ```
 
 Alternatively, include [this script](https://unpkg.com/callforth/dist/callforth.umd.js) and:
@@ -41,9 +39,7 @@ Alternatively, include [this script](https://unpkg.com/callforth/dist/callforth.
 ```html
 <script src="./path/to/callforth.umd.js"></script>
 <script>
-  const { eventOn, timeout } = window.callforth
-  
-  // ...
+  const { eventOn, timeout, polling } = window.callforth
 </script>
 ```
 
@@ -57,13 +53,14 @@ const payload = await eventOn(target, successEvent, errorEvent)
 
 #### Parameters
 
- * `target`: any object you can call `addEventListener` on.
- * `successEvent`: name of the event you want to await.
- * `errorEvent` (optional): if this event fires, the promise is rejected.
+ * _target_ : `EventTarget` - any object you can call `addEventListener` on.
+ * _successEvent_ : `string` - name of the event you want to await.
+ * _errorEvent_ : `string` (optional) - if this event fires, the promise is rejected.
 
 #### Return Value
 
- * `payload`: what would usually be the first argument of the callback.
+ * `Promise<any>` - wraps callback result (callbacks first argument)
+
 
 ### `timeout`
 
@@ -73,11 +70,29 @@ await timeout(delay)
 
 #### Parameters
 
- * `delay`: delay in milliseconds after which the Promise should resolves.
+ * _delay_ : `int` - milliseconds after which the Promise should resolves.
 
 #### Return Value
 
- * undefined
+ * `Promise<void>`
+
+
+### `polling`
+
+```js
+await polling(predicate, { maxTries, interval })
+```
+
+#### Parameters
+ 
+ * _predicate_ : `any -> boolean` - delay in milliseconds after which the Promise should resolve.
+ * _options_ : `object` (optional)
+    * _maxTries_ : `int` (default = 10) - maximum number of times to call predicate before giving up.
+    * _interval_ : `int` (default = 10) - delay in milliseconds between calls of predicate.
+
+#### Return Value
+
+ * `Promise<void>`
 
 ## More Examples
 
